@@ -45,6 +45,8 @@ RUN mkdir -p                             ${CONFLUENCE_INSTALL_DIR} \
 
 RUN chmod -R 777 ${CONFLUENCE_INSTALL_DIR}
 RUN chmod -R 777 ${CONFLUENCE_HOME}
+RUN chmod 777 /sbin/tini
+RUN chmod 777 /entrypoint.sh 
 
 COPY mysql-connector-java-5.1.45-bin.jar $CONFLUENCE_INSTALL_DIR/confluence/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar
 
