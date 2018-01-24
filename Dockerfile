@@ -26,6 +26,9 @@ RUN apt-get update
 RUN apt-get install -y 	ca-certificates wget curl openssh-client openssh-server bash procps openssl perl ttf-dejavu libc6 \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
 
+ENV TINI_VERSION v0.16.1
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /sbin/tini
+RUN chmod +x /sbin/tini
 COPY entrypoint.sh              /entrypoint.sh
 
 ARG CONFLUENCE_VERSION=6.3.3
